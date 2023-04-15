@@ -8,7 +8,7 @@ import { Recipe } from "./recipe-model";
 })
 export class RecipeService {
 
-  baseURL = "localhost:8000/recipes"
+  baseURL = "localhost:4200/recipe"
 
   constructor(private client: HttpClient) { }
 

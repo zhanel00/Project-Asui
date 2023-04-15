@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import { Recipe } from "../recipe-model";
+import { Recipe, recipes } from "../recipe-model";
 import { ActivatedRoute } from "@angular/router";
 import { RecipeService } from "../recipe.service";
 
@@ -13,22 +13,24 @@ export class RecipeDetailsComponent implements OnInit {
   loaded : boolean;
 
   constructor( private route : ActivatedRoute,
-               private recipeService : RecipeService
+               // private recipeService : RecipeService
   ) {
-    this.recipe = {} as Recipe;
+    // this.recipe = {} as Recipe;
+    this.recipe = recipes[0];
     this.loaded = true;
   }
   starRating = 3.5;
-
   ngOnInit() {
-    this.route.paramMap.subscribe((params) => {
-      const id = Number(params.get('id'));
-      this.loaded = false;
-      this.recipeService.getRecipe(id).subscribe((recipe) => {
-        this.recipe = recipe;
-        this.loaded = true;
-        this.starRating = this.recipe.rating;
-      })
-    })
+    // this.route.paramMap.subscribe((params) => {
+    //   const id = Number(params.get('id'));
+    //   this.loaded = false;
+    //   this.recipeService.getRecipe(id).subscribe((recipe) => {
+    //     this.recipe = recipe;
+    //     this.loaded = true;
+    //     this.starRating = this.recipe.rating;
+    //   })
+    // })
+    this.recipe = recipes[0];
+    this.starRating = this.recipe.rating;
   }
 }
