@@ -129,4 +129,17 @@ ngb-rating {
   font-weight: 400;
   font-size: 18px;
   line-height: 29px;
+  list-style: none;
+  display: flex;
+  align-content: center;
+  text-align: center;
+}
+
+.recipe-content-ingredients li p, .recipe-content-directions li p {
+  margin: 0 10px;
+  padding: 2px 0;
+}
+
+li fa-icon {
+  -webkit-text-stroke: 0.5em #FFB661
 }

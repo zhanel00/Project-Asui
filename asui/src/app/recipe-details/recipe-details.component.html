@@ -30,7 +30,7 @@
        <h2>Ingredients: </h2>
        <ul>
          <li *ngFor="let ingredient of recipe.ingredients">
-           {{ingredient.quantity}} {{ingredient.units}} of {{ingredient.name}}
+           <fa-icon [icon]="['far', 'check-circle']" [styles]="{'stroke': '#FFB661', 'color': '#FFB661'}" size="2x" ></fa-icon> <p>{{ingredient.quantity}} {{ingredient.units}} of {{ingredient.name}}</p>
          </li>
        </ul>
      </div>
