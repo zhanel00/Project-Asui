@@ -1,6 +1,6 @@
 ngb-rating {
   color: #FFC107;
-  font-size: 40px;
+  font-size: 30px;
   background: none;
 }
 
@@ -30,7 +30,7 @@ ngb-rating {
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 600;
-  font-size: 64px;
+  font-size: 48px;
   line-height: 78px;
   margin-bottom: 0;
   margin-top: 10px;
@@ -46,7 +46,7 @@ ngb-rating {
 .recipe-info {
   display: flex;
   justify-content: space-between;
-  font-size: 32px;
+  font-size: 24px;
 }
 
 .info-box {
@@ -85,7 +85,7 @@ ngb-rating {
 
 .recipe-reviews {
   font-weight: 600;
-  font-size: 32px;
+  font-size: 24px;
   line-height: 39px;
   text-align: center;
   margin: 5px;
@@ -93,7 +93,7 @@ ngb-rating {
 
 .recipe-save-button {
   border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-  width: 90%;
+  width: 82vw;
   padding: 2.5em 0;
   text-align: center;
 }
@@ -104,7 +104,7 @@ ngb-rating {
   background: #FF8A00;
   border-radius: 25px;
   border: 0;
-  font-size: 32px;
+  font-size: 24px;
   color: white;
 }
 
@@ -121,12 +121,12 @@ ngb-rating {
 
 .recipe-content-ingredients h2, .recipe-content-directions h2 {
   font-weight: 600;
-  font-size: 48px;
+  font-size: 36px;
   line-height: 59px;
 }
 
 .recipe-content-ingredients li, .recipe-content-directions li {
   font-weight: 400;
-  font-size: 24px;
+  font-size: 18px;
   line-height: 29px;
 }
