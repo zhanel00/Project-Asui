@@ -8,6 +8,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FaIconLibrary, FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
+import { NgxPrettyCheckboxModule } from 'ngx-pretty-checkbox';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { far } from '@fortawesome/free-regular-svg-icons';
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    NgxPrettyCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]

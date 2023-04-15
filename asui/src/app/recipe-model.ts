@@ -2,7 +2,7 @@ export interface Recipe {
   id: number;
   title: string;
   ingredients: Ingredient[];
-  description: string;
+  directions: Direction[];
   reviews: number;
   rating: number;
   author_id: number;
@@ -18,6 +18,12 @@ export interface Ingredient {
   name: string;
   units: string;
   quantity: string;
+}
+
+export interface Direction {
+  id: number;
+  step: number;
+  content: string;
 }
 
 export const recipes = [
@@ -36,7 +42,27 @@ export const recipes = [
         units: "grams",
         quantity: "200"
       }] as Ingredient[],
-    description: "best recipe for spaghetti",
+    directions: [
+      {
+        id: 1,
+        step: 1,
+        content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      },
+      {
+        id: 2,
+        step: 2,
+        content: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+      },
+      {
+        id: 3,
+        step: 3,
+        content: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+      },
+      {
+        id: 4,
+        step: 4,
+        content: "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+      }] as Direction[],
     reviews: 5,
     rating: 4.2,
     author_id: 1,

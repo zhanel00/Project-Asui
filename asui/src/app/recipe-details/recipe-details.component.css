@@ -6,7 +6,7 @@ ngb-rating {
 
 .container {
   background: rgb(254,208,154);
-  background: radial-gradient(circle, rgba(248, 211, 174, 0.84) 57%, rgba(248,250,252,1) 100%);
+  background: radial-gradient(circle, rgb(253, 232, 199) 57%, rgba(248,250,252,1) 100%);
   display: flex;
   flex-direction: column;
   align-self: center;
@@ -41,6 +41,7 @@ ngb-rating {
   height: 30vw;
   object-fit: cover;
   object-position: 10% 80%;
+  margin-top: 2em;
 }
 
 .recipe-info {
@@ -93,7 +94,7 @@ ngb-rating {
 
 .recipe-save-button {
   border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-  width: 82vw;
+  width: 870px;
   padding: 2.5em 0;
   text-align: center;
 }
@@ -117,6 +118,7 @@ ngb-rating {
 
 .recipe-content-ingredients, .recipe-content-directions {
   margin: 0 2em;
+  max-width: 40%;
 }
 
 .recipe-content-ingredients h2, .recipe-content-directions h2 {
@@ -132,7 +134,9 @@ ngb-rating {
   list-style: none;
   display: flex;
   align-content: center;
-  text-align: center;
+  margin: 20px 0;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 }
 
 .recipe-content-ingredients li p, .recipe-content-directions li p {
@@ -140,6 +144,11 @@ ngb-rating {
   padding: 2px 0;
 }
 
-li fa-icon {
-  -webkit-text-stroke: 0.5em #FFB661
+li fa-icon:hover {
+  cursor: pointer;
+}
+
+.step {
+  font-size: 32px;
+  font-weight: 600;
 }

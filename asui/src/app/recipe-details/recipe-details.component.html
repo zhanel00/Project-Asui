@@ -1,4 +1,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+<!--<link rel="stylesheet" href="/node_modules/pretty-checkbox/dist/pretty-checkbox.min.css">-->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretty-checkbox@3.0/dist/pretty-checkbox.min.css"/>
 
 <div class="container">
    <div *ngIf="loaded" class="recipe-top">
@@ -33,12 +35,32 @@
            <fa-icon [icon]="['far', 'check-circle']" [styles]="{'stroke': '#FFB661', 'color': '#FFB661'}" size="2x" ></fa-icon> <p>{{ingredient.quantity}} {{ingredient.units}} of {{ingredient.name}}</p>
          </li>
        </ul>
+       <div *ngFor="let ingredient of recipe.ingredients" class="pretty p-icon p-round p-tada">
+         <input type="checkbox" />
+         <div class="state p-primary-o">
+           <i class="icon mdi mdi-heart"></i>
+           <label>{{ingredient.quantity}} {{ingredient.units}} of {{ingredient.name}}</label>
+         </div>
+       </div>
+
+       <div class="pretty p-icon p-round">
+         <input type="radio" name="icon" />
+         <div class="state p-warning-o">
+           <i class="icon mdi mdi-check"></i>
+           <label>Pound</label>
+         </div>
+       </div>
+
+       <p-checkbox shape="round" color="success" animation="smooth">
+         <i p-icon class="fa fa-circle-check material-icons">done</i>
+         Tuesday
+       </p-checkbox>
      </div>
      <div class="recipe-content-directions">
        <h2>Directions: </h2>
        <ol>
-         <li>
-           {{recipe.description}}
+         <li *ngFor="let direction of recipe.directions">
+           <span class="step">{{direction.step}}</span> <p>{{direction.content}}</p>
          </li>
        </ol>
      </div>
