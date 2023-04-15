@@ -1,10 +1,10 @@
 <div class="container">
-   <div class="recipe-main">
-     <img class="recipe-image" src="assets/test.webp">
-     <p class="recipe-name">Blablabla</p>
+   <div *ngIf="loaded" class="recipe-main">
+     <img class="recipe-image" src="{{recipe.img_url}}">
+     <p class="recipe-name">{{recipe.description}}</p>
      <div class="recipe-rating">
        <ngb-rating [max]="5" [(rate)]="starRating" [readonly]="false"></ngb-rating>
-       <p class="recipe-review">{{}}</p>
+       <p class="recipe-review">{{recipe.reviews}} reviews</p>
      </div>
    </div>
 </div>

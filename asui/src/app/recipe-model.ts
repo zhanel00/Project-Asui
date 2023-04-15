@@ -5,4 +5,6 @@ export interface Recipe {
   reviews: number;
   rating: number;
   author_id: number;
+  img_url: string;
 }
+
