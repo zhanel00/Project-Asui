@@ -37,8 +37,8 @@ ngb-rating {
 }
 
 .recipe-image {
-  width: 70vw;
-  height: 25vw;
+  width: 90vw;
+  height: 30vw;
   object-fit: cover;
   object-position: 10% 80%;
 }
