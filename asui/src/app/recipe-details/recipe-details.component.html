@@ -11,15 +11,15 @@
    </div>
    <div class="recipe-info">
      <div class="recipe-difficulty info-box">
-       <p>Level: {{recipe.difficulty}}</p>
-       <p>Total: {{recipe.cook_time + recipe.prep_time}}</p>
+       <p>Level: <span class="bold">{{recipe.difficulty}}</span></p>
+       <p>Total: <span class="bold">{{recipe.cook_time + recipe.prep_time}} mins</span></p>
      </div>
      <div class="recipe-time info-box">
-       <p>Prep: {{recipe.prep_time}}</p>
-       <p>Cook: {{recipe.cook_time}}</p>
+       <p>Prep: <span class="bold">{{recipe.prep_time}} mins</span></p>
+       <p>Cook: <span class="bold">{{recipe.cook_time}} mins</span></p>
      </div>
      <div class="recipe-servings info-box">
-       <p>Yield: {{recipe.servings}}</p>
+       <p>Yield: <span class="bold">{{recipe.servings}} servings</span></p>
      </div>
    </div>
    <div class="recipe-save-button">
