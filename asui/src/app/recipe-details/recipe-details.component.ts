@@ -20,6 +20,12 @@ export class RecipeDetailsComponent implements OnInit {
     this.loaded = true;
   }
   starRating = 3.5;
+  checkAllCheckBox(ev: any) {
+    this.recipe.ingredients.forEach(x => x.isChecked = ev.target.checked)
+  }
+  isAllCheckBoxChecked() {
+    return this.recipe.ingredients.every(r => r.isChecked);
+  }
   ngOnInit() {
     // this.route.paramMap.subscribe((params) => {
     //   const id = Number(params.get('id'));

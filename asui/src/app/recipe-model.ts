@@ -18,6 +18,7 @@ export interface Ingredient {
   name: string;
   units: string;
   quantity: string;
+  isChecked?: boolean;
 }
 
 export interface Direction {

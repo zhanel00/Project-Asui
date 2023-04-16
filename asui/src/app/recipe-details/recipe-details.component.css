@@ -6,7 +6,7 @@ ngb-rating {
 
 .container {
   background: rgb(254,208,154);
-  background: radial-gradient(circle, rgb(253, 232, 199) 57%, rgba(248,250,252,1) 100%);
+  background: radial-gradient(circle, rgb(253, 232, 199) 57%, rgb(248, 243, 229) 100%);
   display: flex;
   flex-direction: column;
   align-self: center;
@@ -127,15 +127,23 @@ ngb-rating {
   line-height: 59px;
 }
 
-.recipe-content-ingredients li, .recipe-content-directions li {
+.recipe-content-ingredients .list, .recipe-content-directions li {
   font-weight: 400;
   font-size: 18px;
-  line-height: 29px;
+  /*line-height: 29px;*/
   list-style: none;
   display: flex;
   align-content: center;
   margin: 20px 0;
+}
+
+.select-all {
   padding-bottom: 20px;
+}
+
+.list-wrapper {
+  margin-top: 30px;
+  padding-bottom: 10px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 }
 
@@ -151,4 +159,23 @@ li fa-icon:hover {
 .step {
   font-size: 32px;
   font-weight: 600;
+}
+
+.shop-list-buttons {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+  padding-left: 9em;
+}
+
+.shop-list-buttons button {
+  width: 327px;
+  height: 57px;
+
+  background: #FF8A00;
+  border-radius: 20px;
+  border: none;
+  font-size: 16px;
+  color: white;
+  margin: 10px 0;
 }
