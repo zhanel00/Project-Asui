@@ -9,12 +9,14 @@ import { FaIconLibrary, FontAwesomeModule } from "@fortawesome/angular-fontaweso
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { NgxPrettyCheckboxModule } from 'ngx-pretty-checkbox';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { AccountDetailsComponent } from './account-details/account-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RecipeDetailsComponent
+    RecipeDetailsComponent,
+    AccountDetailsComponent
   ],
     imports: [
         BrowserModule,
@@ -22,7 +24,8 @@ import {FormsModule} from "@angular/forms";
         NgbModule,
         FontAwesomeModule,
         NgxPrettyCheckboxModule,
-        FormsModule
+        FormsModule,
+        ReactiveFormsModule
     ],
   providers: [],
   bootstrap: [AppComponent]
