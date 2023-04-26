@@ -1,0 +1,78 @@
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+
+<div class="container">
+  <h1>Account Information</h1>
+  <div class="profile-picture">
+    <div class="profile-picture-img">
+      <img src="https://mdbcdn.b-cdn.net/img/new/avatars/8.webp" class="rounded-circle mb-3" style="width: 150px;" alt="Avatar"/>
+      <h5 class="mb-2"><strong>John Doe</strong></h5>
+    </div>
+    <div class="profile-picture-buttons">
+      <button type="button" class="upload">Upload Photo Profile</button>
+      <button type="button" class="remove">Remove</button>
+    </div>
+  </div>
+  <div class="profile-form">
+    <form [formGroup]="formGroup">
+      <div class="form-group">
+        <label>Email: </label>
+        <div class="input-wrapper">
+          <input
+            formControlName="email"
+            id="email"
+            type="email"
+            class="form-control" />
+          <div class="alert alert-danger" *ngIf="email?.touched && email?.invalid">
+            <div *ngIf="oldPwd?.errors?.['required']">Email is required.</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Old Password:</label>
+        <div class="input-wrapper">
+          <input
+            formControlName="oldPwd"
+            id="oldPwd"
+            type="password"
+            class="form-control" />
+          <div class="alert alert-danger" *ngIf="oldPwd?.touched && oldPwd?.invalid">
+            <div *ngIf="oldPwd?.errors?.['required']">Old Password is required.</div>
+            <div *ngIf="oldPwd?.errors?.['shouldBe1234']">Old Password is not valid.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>New Password:</label>
+        <div class="input-wrapper">
+          <input
+            formControlName="newPwd"
+            id="newPwd"
+            type="password"
+            class="form-control" />
+          <div class="alert alert-danger" *ngIf="newPwd?.touched && newPwd?.invalid">
+            <div *ngIf="newPwd?.errors?.['required']">New Password is required.</div>
+          </div>
+        </div>
+      </div>
+
+        <div class="form-group">
+          <label>Confirm Password:</label>
+          <div class="input-wrapper">
+          <input
+            formControlName="confirmPwd"
+            id="confirmPwd"
+            type="password"
+            class="form-control" />
+          <div class="alert alert-danger" *ngIf="confirmPwd?.touched && confirmPwd?.invalid">
+            <div *ngIf="confirmPwd?.errors?.['required']">Confirm Password is required.</div>
+          </div>
+          <div class="alert alert-danger" *ngIf="confirmPwd?.valid && formGroup.invalid && formGroup.errors?.['pwdsDontMatch']">
+            Passwords do not match.
+          </div>
+          </div>
+        </div>
+      <button class="btn btn-primary">Change Password</button>
+    </form>
+  </div>
+</div>

@@ -37,7 +37,7 @@ export class SignInComponent implements OnInit{
       //throw the error using toaster and with required fields
       console.log();
       this.validateAllFormFields(this.loginForm);
-      alert("Your ass");
+      alert("Please correct");
     }
   }
 

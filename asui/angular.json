@@ -26,6 +26,8 @@
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/@mdi/font/css/materialdesignicons.min.css",
+              "node_modules/pretty-checkbox/dist/pretty-checkbox.min.css",
               "src/styles.css"
             ],
             "scripts": []
