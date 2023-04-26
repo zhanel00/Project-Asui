@@ -19,7 +19,10 @@ export class AccountDetailsComponent {
       'email': ['',Validators.required],
       'oldPwd': ['',Validators.required,OldPwdValidators.shouldBe1234],
       'newPwd': ['',Validators.required],
-      'confirmPwd': ['',Validators.required]
+      'confirmPwd': ['',Validators.required],
+      'firstName':[''],
+      'lastName': [''],
+      'userName': ['', Validators.required],
     }, {
       validator: OldPwdValidators.matchPwds
     });
@@ -39,6 +42,10 @@ export class AccountDetailsComponent {
 
   get confirmPwd(){
     return this.formGroup.get('confirmPwd');
+  }
+
+  get userName(){
+    return this.formGroup.get('userName')
   }
 
 }

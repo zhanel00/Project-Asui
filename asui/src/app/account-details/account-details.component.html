@@ -72,6 +72,48 @@
           </div>
           </div>
         </div>
+
+      <div class="form-group">
+        <label>First Name: </label>
+        <div class="input-wrapper">
+          <input
+            formControlName="firsttName"
+            id="firstName"
+            type="text"
+            class="form-control" />
+          <!--          <div class="alert alert-danger" *ngIf="newPwd?.touched && newPwd?.invalid">-->
+          <!--            <div *ngIf="newPwd?.errors?.['required']">New Password is required.</div>-->
+          <!--          </div>-->
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Last Name: </label>
+        <div class="input-wrapper">
+          <input
+            formControlName="lastName"
+            id="lastName"
+            type="text"
+            class="form-control" />
+<!--          <div class="alert alert-danger" *ngIf="newPwd?.touched && newPwd?.invalid">-->
+<!--            <div *ngIf="newPwd?.errors?.['required']">New Password is required.</div>-->
+<!--          </div>-->
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>User name:</label>
+        <div class="input-wrapper">
+          <input
+            formControlName="userName"
+            id="userName"
+            type="text"
+            class="form-control" />
+          <div class="alert alert-danger" *ngIf="userName?.touched && userName?.invalid">
+            <div *ngIf="userName?.errors?.['required']">New Password is required.</div>
+          </div>
+        </div>
+      </div>
       <button class="btn btn-primary">Change Password</button>
     </form>
   </div>
