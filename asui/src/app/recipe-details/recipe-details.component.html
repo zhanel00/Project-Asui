@@ -8,7 +8,7 @@
      <img class="recipe-image" src="{{recipe.img_url}}">
      <p class="recipe-name">{{recipe.title}}</p>
      <div class="recipe-rating">
-       <ngb-rating [max]="5" [(rate)]="starRating" [readonly]="false"></ngb-rating>
+       <ngb-rating [max]="5" [(rate)]="starRating" [readonly]="false" (rateChange)="onRateChange($event)"></ngb-rating>
        <p class="recipe-reviews">{{recipe.reviews}} reviews</p>
      </div>
    </div>

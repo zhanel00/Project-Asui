@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import { Recipe, recipes } from "../recipe-model";
-import { User } from "../user-model"
 import { ActivatedRoute } from "@angular/router";
 import { RecipeService } from "../recipe.service";
 import { UserService } from "../user.service";
 import { Observable } from "rxjs";
+import { Ingredient } from "../recipe-model";
 
 @Component({
   selector: 'app-recipe-details',
@@ -28,7 +28,7 @@ export class RecipeDetailsComponent implements OnInit {
   }
   starRating = 3.5;
   checkAllCheckBox(ev: any) {
-    this.recipe.ingredients.forEach(x => x.isChecked = ev.target.checked)
+    this.recipe.ingredients.forEach(x => x.isChecked = ev.target.checked);
   }
   isAllCheckBoxChecked() {
     return this.recipe.ingredients.every(r => r.isChecked);
@@ -36,10 +36,16 @@ export class RecipeDetailsComponent implements OnInit {
   saveRecipe() {
     this.recipeService.saveRecipe(this.recipe).subscribe(recipe => {
       this.saved = true;
-    })
+    });
     window.alert('You saved this recipe');
   }
+  onRateChange(rating: number) {
+    this.recipeService.postRating(rating).subscribe();
+  }
   addItemToShoppingList() {
+    let shopList: Ingredient[];
+    shopList = this.recipe.ingredients.filter(ingredient => ingredient.isChecked);
+    this.recipeService.addToShoppingList(shopList).subscribe();
     window.alert('You added this item to the shopping list');
   }
   ngOnInit() {

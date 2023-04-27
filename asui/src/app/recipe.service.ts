@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import {catchError, Observable} from "rxjs";
-import {Recipe} from "./recipe-model";
+import {Ingredient, Recipe} from "./recipe-model";
 
 @Injectable({
   providedIn: 'root'
@@ -33,7 +33,15 @@ export class RecipeService {
   }
 
   saveRecipe(recipe: Recipe) : Observable<Recipe> {
-    return this.client.put<Recipe>(this.baseURL + `${recipe.id}/save/`, recipe)
+    return this.client.put<Recipe>(this.baseURL + `${recipe.id}/save/`, recipe);
+  }
+
+  addToShoppingList(ingredients: Ingredient[]) : Observable<Ingredient[]> {
+    return this.client.post<Ingredient[]>(this.baseURL + 'shoplist/add/', ingredients);
+  }
+
+  postRating(rating: number) : Observable<number> {
+    return this.client.post<number>(this.baseURL + 'post-rating/', rating);
   }
 
 }
