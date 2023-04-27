@@ -4,12 +4,15 @@
   <h1>Account Information</h1>
   <div class="profile-picture">
     <div class="profile-picture-img">
-      <img src="https://mdbcdn.b-cdn.net/img/new/avatars/8.webp" class="rounded-circle mb-3" style="width: 150px;" alt="Avatar"/>
-      <h5 class="mb-2"><strong>John Doe</strong></h5>
+      <img src="{{user.profile_pic_url}}" class="rounded-circle mb-3" style="width: 150px; height: 150px; object-fit: cover; background-size: cover;" alt="Avatar" />
+      <h5 class="mb-2"><strong>{{user.first_name}} {{user.last_name}}</strong></h5>
     </div>
     <div class="profile-picture-buttons">
-      <button type="button" class="upload">Upload Photo Profile</button>
-      <button type="button" class="remove">Remove</button>
+      <label for="avatar">
+        <button type="button" class="upload" onclick="avatar.click()">Upload Photo Profile</button>
+        <input type="file" class="upload" id="avatar" accept="image/*" (change)="onFileChange($event)" />
+      </label>
+      <button type="button" class="remove" (click)="removeProfilePicture()">Remove</button>
     </div>
   </div>
   <div class="profile-form">
@@ -77,13 +80,11 @@
         <label>First Name: </label>
         <div class="input-wrapper">
           <input
-            formControlName="firsttName"
+            [ngModel]="newUserInfo.first_name"
+            formControlName="firstName"
             id="firstName"
             type="text"
             class="form-control" />
-          <!--          <div class="alert alert-danger" *ngIf="newPwd?.touched && newPwd?.invalid">-->
-          <!--            <div *ngIf="newPwd?.errors?.['required']">New Password is required.</div>-->
-          <!--          </div>-->
         </div>
       </div>
 
@@ -91,13 +92,11 @@
         <label>Last Name: </label>
         <div class="input-wrapper">
           <input
+            [ngModel]="newUserInfo.last_name"
             formControlName="lastName"
             id="lastName"
             type="text"
             class="form-control" />
-<!--          <div class="alert alert-danger" *ngIf="newPwd?.touched && newPwd?.invalid">-->
-<!--            <div *ngIf="newPwd?.errors?.['required']">New Password is required.</div>-->
-<!--          </div>-->
         </div>
       </div>
 
@@ -105,6 +104,7 @@
         <label>User name:</label>
         <div class="input-wrapper">
           <input
+            [ngModel]="newUserInfo.username"
             formControlName="userName"
             id="userName"
             type="text"
@@ -114,7 +114,7 @@
           </div>
         </div>
       </div>
-      <button class="btn btn-primary">Change Password</button>
+      <button class="submit-button btn btn-primary" (click)="updateUserInfo()" type="submit">Submit</button>
     </form>
   </div>
 </div>

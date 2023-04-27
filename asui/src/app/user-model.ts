@@ -5,8 +5,10 @@ export interface User {
   first_name: string;
   last_name: string;
   email: string;
+  password: string;
   username: string;
   recipes: Recipe[];
+  profile_pic_url: string;
 }
 
 export const user = {
@@ -14,6 +16,7 @@ export const user = {
   first_name: "John",
   last_name: "Doe",
   email: "john.d@gmail.com",
+  password: "mypassword",
   username: "John88",
   recipes: [
     {
@@ -61,5 +64,6 @@ export const user = {
       servings: "2 to 3",
       img_url: "https://scm-assets.constant.co/scm/unilever/e9dc924f238fa6cc29465942875fe8f0/ee869d9b-c90f-459d-b7e3-69ab3df03256.jpg"
     },
-  ]
+  ],
+  profile_pic_url: "https://mdbcdn.b-cdn.net/img/new/avatars/8.webp",
 }

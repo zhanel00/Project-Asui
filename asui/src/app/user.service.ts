@@ -10,7 +10,7 @@ export class UserService {
 
   constructor(private client: HttpClient) { }
 
-  baseURL = "localhost:4200/user/"
+  baseURL = "localhost:4200/users/"
 
   private currentUserSubject = new BehaviorSubject<any>(null);
 
@@ -30,5 +30,21 @@ export class UserService {
 
   getCurrentUser(): Observable<any> {
     return this.currentUserSubject.asObservable();
+  }
+
+  updateUserInfo(user: User): Observable<User> {
+    return this.client.put<User>(this.baseURL + `${user.id}`, user);
+  }
+
+  removeProfilePicture(user: User): Observable<User> {
+    return this.client.put<User>(this.baseURL + `${user.id}`, user);
+  }
+
+  uploadProfilePicture(image: File): Observable<Response> {
+    const formData = new FormData();
+
+    formData.append('image', image);
+
+    return this.client.post<Response>(this.baseURL + 'upload-image', formData);
   }
 }

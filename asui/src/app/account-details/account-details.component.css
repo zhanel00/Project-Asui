@@ -31,6 +31,11 @@
 
 .profile-picture-img {
   text-align: center;
+  object-fit: cover;
+}
+
+.profile-picture-img img {
+  object-fit: cover;
 }
 
 .profile-picture-buttons {
@@ -108,6 +113,13 @@
   /*max-width: 20vw;*/
 }
 
-.form-group .alert-danger {
+input[type=file] {
+  display: none;
+}
+input[type=file]::file-selector-button {
+  display: none;
+}
 
+.submit-button {
+  margin-bottom: 5vh;
 }
