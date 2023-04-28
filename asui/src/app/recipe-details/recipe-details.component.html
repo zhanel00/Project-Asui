@@ -1,0 +1,77 @@
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+<!--<link rel="stylesheet" href="/node_modules/pretty-checkbox/dist/pretty-checkbox.min.css">-->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretty-checkbox@3.0/dist/pretty-checkbox.min.css"/>
+
+<div class="container">
+   <div *ngIf="loaded" class="recipe-top">
+     <img class="recipe-image" src="{{recipe.img_url}}">
+     <p class="recipe-name">{{recipe.title}}</p>
+     <div class="recipe-rating">
+       <ngb-rating [max]="5" [(rate)]="starRating" [readonly]="false" (rateChange)="onRateChange($event)"></ngb-rating>
+       <p class="recipe-reviews">{{recipe.reviews}} reviews</p>
+     </div>
+   </div>
+   <div class="recipe-info">
+     <div class="recipe-difficulty info-box">
+       <p>Level: <span class="bold">{{recipe.difficulty}}</span></p>
+       <p>Total: <span class="bold">{{recipe.cook_time + recipe.prep_time}} mins</span></p>
+     </div>
+     <div class="recipe-time info-box">
+       <p>Prep: <span class="bold">{{recipe.prep_time}} mins</span></p>
+       <p>Cook: <span class="bold">{{recipe.cook_time}} mins</span></p>
+     </div>
+     <div class="recipe-servings info-box">
+       <p>Yield: <span class="bold">{{recipe.servings}} servings</span></p>
+     </div>
+   </div>
+   <div class="recipe-save-button">
+     <button type="button" (click)="saveRecipe()">Save Recipe</button>
+   </div>
+   <div class="recipe-content">
+     <div class="recipe-content-ingredients">
+       <h2>Ingredients: </h2>
+       <div class="list-wrapper">
+         <div  class="list pretty p-icon p-round p-bigger">
+           <input type="checkbox" name="icon" [checked]="isAllCheckBoxChecked()" (change)="checkAllCheckBox($event)" />
+           <div class="state p-warning-o">
+             <i class="icon mdi mdi-check"></i>
+             <label><span><strong>Select/Deselect All</strong></span></label>
+           </div>
+         </div>
+       </div>
+       <div *ngFor="let ingredient of recipe.ingredients; let i=index" class="list-wrapper">
+         <div  class="list pretty p-icon p-round p-bigger">
+           <input type="checkbox" name="icon" [(ngModel)]="recipe.ingredients[i].isChecked" />
+           <div class="state p-warning-o">
+             <i class="icon mdi mdi-check"></i>
+             <label><span>{{ingredient.quantity}} {{ingredient.units}} of {{ingredient.name}}</span></label>
+           </div>
+         </div>
+       </div>
+<!--       <p-checkbox *ngFor="let ingredient of recipe.ingredients" class="list" shape="round" color="warning" animation="smooth" bigger="true">-->
+<!--         <i p-icon class="icon mdi mdi-check"></i>-->
+<!--         <span>{{ingredient.quantity}} {{ingredient.units}} of {{ingredient.name}}</span>-->
+<!--       </p-checkbox>-->
+     </div>
+     <div class="recipe-content-directions">
+       <h2>Directions: </h2>
+       <ol>
+         <li *ngFor="let direction of recipe.directions">
+           <span class="step">{{direction.step}}</span> <p>{{direction.content}}</p>
+         </li>
+       </ol>
+     </div>
+   </div>
+   <div class="shop-list-buttons">
+     <div class="shop-list-buttons-add">
+       <button type="button" (click)="addItemToShoppingList()">Add to Shopping List</button>
+     </div>
+     <div *ngIf="currentUser$ | async as currentUser" class="shop-list-buttons-view">
+       <button type="button" [routerLink]="['/users', currentUser.id, '/shoplist']">View Shopping List</button>
+     </div>
+     <div class="shop-list-buttons-subst">
+       <button type="button">Ingredient Substitutions</button>
+     </div>
+   </div>
+</div>

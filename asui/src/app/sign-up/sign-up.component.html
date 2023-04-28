@@ -1,0 +1,59 @@
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+<!--<link rel="stylesheet" href="/node_modules/pretty-checkbox/dist/pretty-checkbox.min.css">-->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretty-checkbox@3.0/dist/pretty-checkbox.min.css"/>
+
+
+<div class="outer">
+  <div class="container">
+    <div class="row">
+      <div class="offset-md-2 col-lg-5 col-md-7 offset-lg-4 offset-md-3">
+        <div class="panel border">
+          <div class="panel-heading">
+            <h3 class="pt-3 font-weight-bold" style="font-weight: bold">Sign Up</h3>
+          </div>
+          <div class="panel-body p-3">
+            <form [formGroup]="signUpForm">
+              <div class="form-group pt-3">
+                <div class="input-field" [class.error]="signUpForm.controls['firstName'].dirty && signUpForm.hasError('required','firstName')">
+                  <span class="fa fa-user p-2"></span>
+                  <input formControlName="firstName" type="text" placeholder="FirstName">
+                </div>
+              </div>
+              <small *ngIf="signUpForm.controls['firstName'].dirty && signUpForm.hasError('required','firstName')" class="text-danger">*FirstName is required</small>
+              <div class="form-group pt-3">
+                <div class="input-field" [class.error]="signUpForm.controls['lastName'].dirty && signUpForm.hasError('required','lastName')">
+                  <span class="fa fa-user p-2"></span>
+                  <input formControlName="lastName" type="text" placeholder="LastName">
+                </div>
+              </div>
+              <small *ngIf="signUpForm.controls['lastName'].dirty && signUpForm.hasError('required','lastName')" class="text-danger">*LastName is required</small>
+              <div class="form-group pt-3">
+                <div class="input-field" [class.error]="signUpForm.controls['email'].dirty && signUpForm.hasError('required','email')">
+                  <span class="fa fa-user p-2"></span>
+                  <input formControlName="email" type="email" placeholder="Email">
+                </div>
+              </div>
+              <small *ngIf="signUpForm.controls['email'].dirty && signUpForm.hasError('required','email')" class="text-danger">*Email is required</small>
+              <div class="form-group pt-3">
+                <div class="input-field" [class.error]="signUpForm.controls['password'].dirty && signUpForm.hasError('required','password')">
+                  <span class="fa fa-lock p-2"></span>
+                  <input formControlName="password" type="password" placeholder="Password">
+                </div>
+              </div>
+              <small *ngIf="signUpForm.controls['password'].dirty && signUpForm.hasError('required','password')" class="text-danger">*Password is required</small>
+              <div class="form-group pt-3">
+                <div class="input-field" [class.error]="signUpForm.controls['passwordConfirmation'].dirty && signUpForm.hasError('required','passwordConfirmation')">
+                  <input formControlName="passwordConfirmation" type="text" placeholder="Password confirmation">
+                </div>
+              </div>
+              <small *ngIf="signUpForm.controls['passwordConfirmation'].dirty && signUpForm.hasError('required','passwordConfirmation')" class="text-danger">*Confirmation is required</small>
+              <button type="submit" class="btn btn-block mt-4 w-100" (click)="onSignUp()" >Sign Up</button>
+              <div class="text-center pt-4 text-muted">Already have an account? <a id="forge" routerLink="/signIn">Sign In</a></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,125 @@
+.container {
+  background: rgb(254,208,154);
+  background: radial-gradient(circle, rgb(253, 232, 199) 57%, rgb(248, 243, 229) 100%);
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  align-items: center;
+  overflow: scroll;
+  margin: auto;
+  /*width: 100%;*/
+  width: 100vw;
+  max-width: 1720px;
+  font-family: 'Montserrat';
+}
+
+.container h1 {
+  font-weight: 600;
+  font-size: 64px;
+  line-height: 78px;
+  align-self: flex-start;
+  margin-left: 10vw;
+  margin-bottom: 5vh;
+  margin-top: 5vh;
+}
+
+.profile-picture {
+  display: flex;
+  align-self: flex-start;
+  margin-left: 10vw;
+}
+
+.profile-picture-img {
+  text-align: center;
+  object-fit: cover;
+}
+
+.profile-picture-img img {
+  object-fit: cover;
+}
+
+.profile-picture-buttons {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-picture-buttons button {
+  margin: 10px;
+}
+
+.upload {
+  width: 210px;
+  height: 35px;
+  background: #FF8A00;
+  border-radius: 5px;
+  border: none;
+  font-weight: 600;
+  /*font-size: 24px;*/
+  line-height: 29px;
+  color: #FFFFFF;
+}
+
+.remove {
+  box-sizing: border-box;
+
+  width: 124px;
+  height: 29px;
+
+  background: #FFFFFF;
+  /* Orange 1 */
+
+  border: 1px solid #FF8A00;
+  border-radius: 8px;
+}
+
+.profile-form {
+  align-self: flex-start;
+  margin-left: 5vw;
+  margin-top: 5vh;
+}
+
+.profile-form button {
+  width: 210px;
+  height: 40px;
+  background: #FF8A00;
+  border-radius: 5px;
+  border: none;
+  font-weight: 600;
+  /*font-size: 24px;*/
+  line-height: 29px;
+  color: #FFFFFF;
+  margin-left: 15vw;
+}
+
+.form-group {
+  display: flex;
+  /*flex-direction: column;*/
+  margin: 2em 0;
+  /*max-height: 5vh;*/
+  /*max-width: 60vw;*/
+}
+
+.form-group label {
+  min-width: 10em;
+  max-width: 10em;
+  text-align: end;
+  margin-right: 10px;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 44px;
+}
+
+.form-group input {
+  /*max-width: 20vw;*/
+}
+
+input[type=file] {
+  display: none;
+}
+input[type=file]::file-selector-button {
+  display: none;
+}
+
+.submit-button {
+  margin-bottom: 5vh;
+}

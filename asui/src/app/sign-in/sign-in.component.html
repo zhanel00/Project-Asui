@@ -1,0 +1,41 @@
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+<!--<link rel="stylesheet" href="/node_modules/pretty-checkbox/dist/pretty-checkbox.min.css">-->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretty-checkbox@3.0/dist/pretty-checkbox.min.css"/>
+
+<div class="outer">
+  <div class="container">
+    <div class="row">
+      <div class="offset-md-2 col-lg-5 col-md-7 offset-lg-4 offset-md-3">
+        <div class="panel border">
+          <div class="panel-heading">
+            <h3 class="pt-3" style="font-weight: bold">Sign In</h3>
+          </div>
+          <div class="panel-body p-3">
+            <form [formGroup]="loginForm">
+              <div class="form-group pt-3">
+                <div class="input-field" [class.error]="loginForm.controls['email'].dirty && loginForm.hasError('required', 'email')">
+                  <span class="fa fa-user p-2"></span>
+                  <input formControlName="email" type="email" placeholder="Email">
+                </div>
+              </div>
+              <small *ngIf="loginForm.controls['email'].dirty && loginForm.hasError('required', 'email')" class="text-danger">*Email is required</small>
+              <div class="form-group pt-3">
+                <div class="input-field" [class.error]="loginForm.controls['password'].dirty && loginForm.hasError('required', 'password')">
+                  <span class="fa fa-lock p-2"></span>
+                  <input formControlName="password" [type]="type" placeholder="Password">
+                  <span (click)="hideShowPass()" class="fa {{eyeIcon}}"></span>
+                </div>
+              </div>
+              <small *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('required', 'password')" class="text-danger">*Password is required</small>
+              <div class="form-inline fr mt-4">
+                <a id="forget" class="font-weight-bold">Forget Password?</a>
+              </div>
+              <button (click)="onSubmit()" type="submit" class="btn btn-block mt-4 w-100">Sign In</button>
+              <div class="text-center pt-4 text-muted">Don't have an account? <a id="forge" routerLink="/signUp">Sign Up</a></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

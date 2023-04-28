@@ -25,6 +25,9 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/@mdi/font/css/materialdesignicons.min.css",
+              "node_modules/pretty-checkbox/dist/pretty-checkbox.min.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -94,5 +97,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "eba46720-1c41-4bbe-a0b6-1fee38cb091c"
   }
 }
