@@ -10,12 +10,11 @@ import {ShopListComponent} from "./shop-list/shop-list.component";
 
 const routes: Routes = [
   { path: 'recipes', component: RecipesComponent},
-  { path:'', redirectTo:'/home', pathMatch:'full'},
+  { path: '', redirectTo:'/home', pathMatch:'full'},
   { path: 'home', component: HomePageComponent},
   { path: 'recipes/:id', component: RecipeDetailsComponent},
   { path: 'signIn', component: SignInComponent},
   { path: 'signUp', component: SignUpComponent},
-  { path: 'recipes/:id', component: RecipeDetailsComponent},
   { path: 'users/:id', component: AccountDetailsComponent},
   { path: 'users/:id/shoplist', component: ShopListComponent},
 ];
