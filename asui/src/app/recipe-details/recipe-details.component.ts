@@ -53,12 +53,19 @@ export class RecipeDetailsComponent implements OnInit {
     //   const id = Number(params.get('id'));
     //   this.loaded = false;
     //   this.recipeService.getRecipe(id).subscribe((recipe) => {
-    //     this.recipe = recipe;
+    //     this.recipe = recipes[id - 1];
     //     this.loaded = true;
     //     this.starRating = this.recipe.rating;
     //   })
     // })
-    this.recipe = recipes[0];
+    // this.recipe = recipes[0];
+    this.route.paramMap.subscribe((params) => {
+      const id = Number(params.get('id'));
+      this.loaded = false;
+      this.recipe = recipes[id - 1];
+      this.loaded = true;
+      this.starRating = this.recipe.rating;
+    })
     this.starRating = this.recipe.rating;
     this.currentUser$ = this.userService.getCurrentUser();
   }
