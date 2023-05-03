@@ -22,7 +22,7 @@
   <div style="display: flex; flex-wrap: wrap; justify-content: space-between; width: 95vw">
     <div *ngIf="loaded">
       <img class="t-n-t" src="{{recipes[0].img_url}}" [routerLink]="['/recipes', recipes[0].id]">
-      <p class="desc">{{recipes[0].title}}</p>
+      <p class="desc" [routerLink]="['/recipes', recipes[0].id.toString()]">{{recipes[0].title}} </p>
     </div>
     <div *ngIf="loaded">
       <img class="t-n-t" src="{{recipes[0].img_url}}" routerLink="recipes/1">

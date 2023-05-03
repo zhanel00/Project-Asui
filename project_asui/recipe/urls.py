@@ -1,11 +1,9 @@
-from django.urls import path
+from django.urls import path, re_path
 
-from views import cbv
+from recipe.views import RecipeListView, RecipeDetailView
 
 urlpatterns = [
-    path(''),
-    path('<int:recipe_id>/', cbv.RecipeDetailAPIView.as_view()),
-    path('<int:recipe_id>/save/', ),
-    path('<int:recipe_id>/post_rating/', ),
-    # maybe shoplist
+    path('recipes', RecipeListView.as_view()),
+    path('recipes/<int:pk>', RecipeDetailView.as_view()),
+
 ]
