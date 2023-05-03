@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {BehaviorSubject, catchError, Observable} from "rxjs";
 import { User } from './user-model'
+import { Recipe } from './recipe-model'
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class UserService {
 
   constructor(private client: HttpClient) { }
 
-  baseURL = "localhost:4200/users/"
+  baseURL = "localhost:4200/user/"
 
   private currentUserSubject = new BehaviorSubject<any>(null);
 
@@ -33,11 +34,11 @@ export class UserService {
   }
 
   updateUserInfo(user: User): Observable<User> {
-    return this.client.put<User>(this.baseURL + `${user.id}`, user);
+    return this.client.put<User>(this.baseURL, user);
   }
 
   removeProfilePicture(user: User): Observable<User> {
-    return this.client.put<User>(this.baseURL + `${user.id}`, user);
+    return this.client.put<User>(this.baseURL, user);
   }
 
   uploadProfilePicture(image: File): Observable<Response> {
@@ -45,6 +46,11 @@ export class UserService {
 
     formData.append('image', image);
 
-    return this.client.post<Response>(this.baseURL + 'upload-image', formData);
+    return this.client.put<Response>(this.baseURL + 'upload-image', formData);
   }
+
+  getSavedRecipes(): Observable<Recipe[]> {
+    return this.client.get<Recipe[]>(this.baseURL)
+  }
+
 }
