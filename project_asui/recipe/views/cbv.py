@@ -60,7 +60,7 @@ class RecipeSaveView(APIView):
         except Recipe.DoesNotExist as e:
             return Response({'error': str(e)}, status=status.HTTP_404_NOT_FOUND)
 
-    def put(self, request, *args, **kwargs):
+    def post(self, request, *args, **kwargs):
         if request.user.is_authenticated:
             pk = self.kwargs.get('pk')
             recipe = self.get_object(pk)
@@ -72,5 +72,4 @@ class RecipeSaveView(APIView):
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         else:
             return Response({'user_authenticated': False}, status=status.HTTP_401_UNAUTHORIZED)
-
 

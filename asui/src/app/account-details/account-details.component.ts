@@ -1,20 +1,22 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {user, User} from "../user-model";
 import {AbstractControl, FormGroup, FormBuilder, Validators} from "@angular/forms";
 import {OldPwdValidators} from "./pwd-validator.validators";
 import {UserService} from "../user.service";
+import {Recipe} from "../recipe-model";
 
 @Component({
   selector: 'app-account-details',
   templateUrl: './account-details.component.html',
   styleUrls: ['./account-details.component.css']
 })
-export class AccountDetailsComponent {
+export class AccountDetailsComponent implements OnInit {
   user : User;
   newUserInfo: User;
   loaded: boolean;
   formGroup: FormGroup;
   file: string = '';
+  savedRecipes: Recipe[];
   constructor(
                 private fb: FormBuilder,
                 private userService: UserService,
@@ -33,6 +35,7 @@ export class AccountDetailsComponent {
     }, {
       validator: OldPwdValidators.matchPwds
     });
+    this.savedRecipes = [] as Recipe[];
   }
 
   get email(){
@@ -97,6 +100,12 @@ export class AccountDetailsComponent {
       // this.user.first_name = user.first_name;
       // this.user.last_name = user.last_name;
       this.user = user;
+    })
+  }
+
+  ngOnInit(): void {
+    this.userService.getSavedRecipes().subscribe( recipes => {
+      this.savedRecipes = recipes;
     })
   }
 

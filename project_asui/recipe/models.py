@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Avg
 from signup.models import User
 
 
@@ -18,7 +19,7 @@ class Recipe(models.Model):
     title = models.CharField(max_length=255)
     ingredients = models.ManyToManyField(Ingredient, through="Recipe_ingredients")
     reviews = models.IntegerField()
-    rating = models.FloatField()
+    rating = models.FloatField(default=0)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     difficulty = models.CharField(max_length=255)
     prep_time = models.IntegerField()
@@ -28,6 +29,9 @@ class Recipe(models.Model):
     class Meta:
         verbose_name = 'Recipe'
         verbose_name_plural = 'Recipes'
+
+    def average_rating(self) -> float:
+        return Review.objects.filter(recipe=self).aggregate(Avg("rating"))["rating__avg"] or 0
 
     def __str__(self):
         return f'{self.id}: {self.title}, email: {self.author}'
