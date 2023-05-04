@@ -12,7 +12,7 @@ export class RecipesComponent {
   loaded: boolean;
   constructor(private route: ActivatedRoute,)
   {
-    this.recipes = recipes;
+    this.recipes = [];
     this.loaded = true;
   }
 }
