@@ -8,7 +8,7 @@ export interface User {
   password: string;
   username: string;
   recipes: Recipe[];
-  profile_pic_url: string;
+  photo: string;
 }
 
 export const user = {
@@ -56,7 +56,7 @@ export const user = {
           content: "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
         }] as Direction[],
       reviews: 5,
-      rating: 4.2,
+      average_rating: 4.2,
       author_id: 1,
       difficulty: "easy",
       prep_time: 10,
@@ -65,5 +65,5 @@ export const user = {
       img_url: "https://scm-assets.constant.co/scm/unilever/e9dc924f238fa6cc29465942875fe8f0/ee869d9b-c90f-459d-b7e3-69ab3df03256.jpg"
     },
   ],
-  profile_pic_url: "https://mdbcdn.b-cdn.net/img/new/avatars/8.webp",
+  photo: "https://mdbcdn.b-cdn.net/img/new/avatars/8.webp",
 }

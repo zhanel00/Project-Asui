@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from models import *
+from .models import *
 
 
 class IngredientSerializer(serializers.ModelSerializer):
@@ -14,15 +14,29 @@ class DirectionSerializer(serializers.ModelSerializer):
         fields = ['id', 'recipe', 'step', 'content']
 
 
+class RecipeIngredientSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = RecipeIngredient
+        fields = ['id', 'recipe', 'ingredient', 'measurement_unit', 'measurement_quantity']
+
+
 class RecipeSerializer(serializers.ModelSerializer):
     ingredients = IngredientSerializer(read_only=True, many=True)
     directions = DirectionSerializer(read_only=True, many=True)
+    average_rating = serializers.SerializerMethodField()
+    reviews = serializers.SerializerMethodField()
+
+    def get_average_rating(self, recipe):
+        return recipe.average_rating
+
+    def get_reviews(self, recipe):
+        return recipe.num_of_reviews
 
     class Meta:
         model = Recipe
-        fields = ['id', 'title', 'ingredients', 'directions', 'reviews', 'rating', 'author', 'difficulty', 'prep_time',
+        fields = ['id', 'title', 'ingredients', 'directions', 'reviews', 'average_rating', 'author', 'difficulty', 'prep_time',
                   'cook_time',
-                  'servings']
+                  'servings', 'photo']
 
 
 class MeasurementUnitSerializer(serializers.ModelSerializer):
@@ -37,13 +51,8 @@ class MeasurementQuantitySerializer(serializers.ModelSerializer):
         fields = ['id', 'qty']
 
 
-class RecipeIngredientSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = RecipeIngredient
-        fields = ['recipe', 'ingredient', 'measurement_unit', 'measurement_quantity']
-
 
 class ReviewSerializer(serializers.ModelSerializer):
     class Meta:
         model = Review
-        fields = ['user', 'recipe', 'rating']
+        fields = ['id', 'user', 'recipe', 'rating']

@@ -32,13 +32,13 @@ class RecipeDetailView(APIView):
             return Response({'error': str(e)}, status=status.HTTP_404_NOT_FOUND)
 
     def get(self, request, *args, **kwargs):
-        pk = self.kwargs.get('pk')
+        pk = self.kwargs.get('recipe_id')
         recipe = self.get_object(pk)
         serializer = RecipeSerializer(recipe)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def put(self, request, *args, **kwargs):
-        pk = self.kwargs.get('pk')
+        pk = self.kwargs.get('recipe_id')
         recipe = self.get_object(pk)
         serializer = RecipeSerializer(recipe, data=request.data)
         if serializer.is_valid():
@@ -47,7 +47,7 @@ class RecipeDetailView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, *args, **kwargs):
-        pk = self.kwargs.get('pk')
+        pk = self.kwargs.get('recipe_id')
         recipe = self.get_object(pk)
         recipe.delete()
         return Response({'delete': True}, status=status.HTTP_202_ACCEPTED)
@@ -62,7 +62,7 @@ class RecipeSaveView(APIView):
 
     def post(self, request, *args, **kwargs):
         if request.user.is_authenticated:
-            pk = self.kwargs.get('pk')
+            pk = self.kwargs.get('recipe_id')
             recipe = self.get_object(pk)
             # serializer = RecipeSerializer(recipe, data=request.data)
             serializer = BookmarkSerializer(user=request.user, recipe=recipe)

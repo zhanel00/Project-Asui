@@ -4,13 +4,19 @@ export interface Recipe {
   ingredients: Ingredient[];
   directions: Direction[];
   reviews: number;
-  rating: number;
-  author_id: number;
+  average_rating: number;
+  author: number;
   difficulty: string;
   prep_time: number;
   cook_time: number;
   servings: string;
-  img_url: string;
+  photo: string;
+}
+
+export interface Review {
+  user_id: number;
+  recipe_id: number;
+  rating: number;
 }
 
 export interface Ingredient {
@@ -65,7 +71,7 @@ export const recipes = [
         content: "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
       }] as Direction[],
     reviews: 5,
-    rating: 4.2,
+    average_rating: 4.2,
     author_id: 1,
     difficulty: "easy",
     prep_time: 10,
@@ -110,7 +116,7 @@ export const recipes = [
         content: "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
       }] as Direction[],
     reviews: 20,
-    rating: 3.5,
+    average_rating: 3.5,
     author_id: 2,
     difficulty: "easy",
     prep_time: 10,

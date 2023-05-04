@@ -8,12 +8,12 @@ import {Ingredient, Recipe} from "./recipe-model";
 })
 export class RecipeService {
 
-  baseURL = "localhost:4200/recipes/"
+  baseURL = "http://127.0.0.1:8000/recipes/"
 
   constructor(private client: HttpClient) { }
 
   getRecipe(id: number) : Observable<Recipe> {
-    return this.client.get<Recipe>(this.baseURL + `${id}`);
+    return this.client.get<Recipe>(this.baseURL + `${id}/`);
   }
 
   getRecipeList() : Observable<Recipe[]> {
@@ -25,11 +25,11 @@ export class RecipeService {
   }
 
   updateRecipe(recipe: Recipe) : Observable<Recipe> {
-    return this.client.put<Recipe>(this.baseURL + `${recipe.id}`, recipe);
+    return this.client.put<Recipe>(this.baseURL + `${recipe.id}/`, recipe);
   }
 
   deleteRecipe(id: number) : Observable<Recipe> {
-    return this.client.delete<Recipe>(this.baseURL + `${id}`);
+    return this.client.delete<Recipe>(this.baseURL + `${id}/`);
   }
 
   saveRecipe(recipe: Recipe) : Observable<Recipe> {
@@ -40,8 +40,8 @@ export class RecipeService {
     return this.client.post<Ingredient[]>(this.baseURL + 'shoplist/add/', ingredients);
   }
 
-  postRating(rating: number) : Observable<number> {
-    return this.client.post<number>(this.baseURL + 'post-rating/', rating);
+  postRating(recipe_id: number, rating: number) : Observable<number> {
+    return this.client.post<number>(this.baseURL + `${recipe_id}` + '/rating/', rating);
   }
 
 }

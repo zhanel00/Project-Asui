@@ -11,7 +11,7 @@ export class UserService {
 
   constructor(private client: HttpClient) { }
 
-  baseURL = "localhost:4200/user/"
+  baseURL = "http://127.0.0.1:8000/users/"
 
   private currentUserSubject = new BehaviorSubject<any>(null);
 
@@ -44,9 +44,9 @@ export class UserService {
   uploadProfilePicture(image: File): Observable<Response> {
     const formData = new FormData();
 
-    formData.append('image', image);
+    formData.append('photo', image);
 
-    return this.client.put<Response>(this.baseURL + 'upload-image', formData);
+    return this.client.put<Response>(this.baseURL + 'upload-image/', formData);
   }
 
   getSavedRecipes(): Observable<Recipe[]> {

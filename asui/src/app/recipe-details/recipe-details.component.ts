@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import { Recipe, recipes } from "../recipe-model";
+import {Recipe, recipes, Review} from "../recipe-model";
 import { ActivatedRoute } from "@angular/router";
 import { RecipeService } from "../recipe.service";
 import { UserService } from "../user.service";
@@ -16,15 +16,17 @@ export class RecipeDetailsComponent implements OnInit {
   loaded : boolean;
   saved : boolean;
   currentUser$: Observable<any> | undefined;
+  review: Review;
 
   constructor( private route : ActivatedRoute,
                private recipeService : RecipeService,
                private userService : UserService,
   ) {
-    // this.recipe = {} as Recipe;
-    this.recipe = recipes[0];
+    this.recipe = {} as Recipe;
+    // this.recipe = recipes[0];
     this.loaded = true;
     this.saved = false;
+    this.review = {} as Review;
   }
   starRating = 3.5;
   checkAllCheckBox(ev: any) {
@@ -40,7 +42,11 @@ export class RecipeDetailsComponent implements OnInit {
     window.alert('You saved this recipe');
   }
   onRateChange(rating: number) {
-    this.recipeService.postRating(rating).subscribe();
+    // this.review.recipe_id = this.recipe.id;
+    // this.review.rating = rating;
+    this.recipeService.postRating(this.recipe.id, rating).subscribe(rating => {
+      this.starRating = rating
+    });
   }
   addItemToShoppingList() {
     let shopList: Ingredient[];
@@ -49,24 +55,25 @@ export class RecipeDetailsComponent implements OnInit {
     window.alert('You added this item to the shopping list');
   }
   ngOnInit() {
-    // this.route.paramMap.subscribe((params) => {
-    //   const id = Number(params.get('id'));
-    //   this.loaded = false;
-    //   this.recipeService.getRecipe(id).subscribe((recipe) => {
-    //     this.recipe = recipes[id - 1];
-    //     this.loaded = true;
-    //     this.starRating = this.recipe.rating;
-    //   })
-    // })
-    // this.recipe = recipes[0];
     this.route.paramMap.subscribe((params) => {
       const id = Number(params.get('id'));
       this.loaded = false;
-      this.recipe = recipes[id - 1];
-      this.loaded = true;
-      this.starRating = this.recipe.rating;
+      this.recipeService.getRecipe(id).subscribe((recipe) => {
+        this.recipe = recipe;
+        this.loaded = true;
+        this.starRating = this.recipe.average_rating;
+      })
     })
-    this.starRating = this.recipe.rating;
-    this.currentUser$ = this.userService.getCurrentUser();
+    // this.recipe = recipes[0];
+    //   this.route.paramMap.subscribe((params) => {
+    //     const id = Number(params.get('id'));
+    //     this.loaded = false;
+    //     this.recipe = recipes[id - 1];
+    //     this.loaded = true;
+    //     this.starRating = this.recipe.average_rating;
+    //   })
+    //   this.starRating = this.recipe.average_rating;
+    //   this.currentUser$ = this.userService.getCurrentUser();
+    // }
   }
 }

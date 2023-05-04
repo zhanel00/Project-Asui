@@ -21,8 +21,8 @@ export class AccountDetailsComponent implements OnInit {
                 private fb: FormBuilder,
                 private userService: UserService,
               ) {
-    this.user = user;
-    this.newUserInfo = user;
+    this.user = {} as User;
+    this.newUserInfo = {} as User;
     this.loaded = true;
     this.formGroup = fb.group({
       'email': ['',Validators.required],
@@ -63,7 +63,7 @@ export class AccountDetailsComponent implements OnInit {
   }
 
   removeProfilePicture() {
-    this.user.profile_pic_url = "";
+    this.user.photo = "";
     this.userService.removeProfilePicture(this.user).subscribe(user => {
       this.user = user;
     })
@@ -76,7 +76,7 @@ export class AccountDetailsComponent implements OnInit {
       const _file = URL.createObjectURL(files[0]);
       this.file = _file;
       this.resetInput();
-      this.user.profile_pic_url = this.file;
+      this.user.photo = this.file;
       this.userService.uploadProfilePicture(files[0]).subscribe();
     }
 
