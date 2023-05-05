@@ -26,7 +26,7 @@ def recipe_rating(request, recipe_id):
     if request.method == 'POST':
         if request.user.is_authenticated:
             review = Review(user=request.user, recipe=recipe, rating=request.data)
-            serializer = ReviewSerializer(review)
+            serializer = ReviewSerializer(review, data={'user': f'{request.user.id}', 'recipe': f'{recipe.id}', 'rating': int(request.data.get('rating'))})
             if serializer.is_valid():
                 serializer.save()
                 return Response(serializer.data)

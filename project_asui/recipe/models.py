@@ -92,4 +92,4 @@ class Review(models.Model):
     rating = models.IntegerField(default=0)
 
     def __str__(self):
-        return self.recipe.title + ": " + self.rating
+        return self.recipe.title + ": " + str(self.rating)

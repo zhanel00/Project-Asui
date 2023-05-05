@@ -15,6 +15,8 @@ class DirectionSerializer(serializers.ModelSerializer):
 
 
 class RecipeIngredientSerializer(serializers.ModelSerializer):
+    # ingredient = IngredientSerializer()
+
     class Meta:
         model = RecipeIngredient
         fields = ['id', 'recipe', 'ingredient', 'measurement_unit', 'measurement_quantity']
@@ -22,6 +24,7 @@ class RecipeIngredientSerializer(serializers.ModelSerializer):
 
 class RecipeSerializer(serializers.ModelSerializer):
     ingredients = IngredientSerializer(read_only=True, many=True)
+    # recipe_ingredients = RecipeIngredientSerializer(read_only=True, many=True)
     directions = DirectionSerializer(read_only=True, many=True)
     average_rating = serializers.SerializerMethodField()
     reviews = serializers.SerializerMethodField()
@@ -34,7 +37,8 @@ class RecipeSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Recipe
-        fields = ['id', 'title', 'ingredients', 'directions', 'reviews', 'average_rating', 'author', 'difficulty', 'prep_time',
+        fields = ['id', 'title', 'ingredients', 'directions', 'reviews', 'average_rating', 'author', 'difficulty',
+                  'prep_time',
                   'cook_time',
                   'servings', 'photo']
 
@@ -49,7 +53,6 @@ class MeasurementQuantitySerializer(serializers.ModelSerializer):
     class Meta:
         model = MeasurementQuantity
         fields = ['id', 'qty']
-
 
 
 class ReviewSerializer(serializers.ModelSerializer):
