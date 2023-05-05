@@ -12,7 +12,7 @@ import { FaIconLibrary, FontAwesomeModule } from "@fortawesome/angular-fontaweso
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { NgxPrettyCheckboxModule } from 'ngx-pretty-checkbox';
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AccountDetailsComponent } from './account-details/account-details.component';
 import { FooterComponent } from './footer/footer.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';

@@ -43,5 +43,9 @@ export class RecipeService {
   postRating(recipe_id: number, rating: number) : Observable<number> {
     return this.client.post<number>(this.baseURL + `${recipe_id}` + '/rating/', rating);
   }
-
+  uploadRecipePicture(image: File): Observable<Response> {
+    const formData = new FormData();
+    formData.append('photo', image);
+    return this.client.put<Response>(this.baseURL + 'upload-image/', formData);
+  }
 }
