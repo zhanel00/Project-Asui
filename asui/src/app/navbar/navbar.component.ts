@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-
+  show: boolean = false;
+  showInput() {
+    this.show = !this.show;
+  }
 }

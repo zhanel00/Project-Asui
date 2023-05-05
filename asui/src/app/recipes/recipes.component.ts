@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { Recipe, recipes } from "../recipe-model";
-import { RecipeService } from "../recipe.service"
 import { ActivatedRoute } from "@angular/router";
+import { RecipeService } from "../recipe.service";
+import { Observable } from "rxjs";
+
 @Component({
   selector: 'app-recipes',
   templateUrl: './recipes.component.html',
@@ -10,9 +12,25 @@ import { ActivatedRoute } from "@angular/router";
 export class RecipesComponent {
   recipes: Recipe[] = [];
   loaded: boolean;
-  constructor(private route: ActivatedRoute,)
+  searchText: string = "";
+  constructor( private route: ActivatedRoute,
+               private recipeService : RecipeService,)
   {
     this.recipes = recipes;
     this.loaded = true;
+  }
+  ngOnInit(): void {
+    this.recipes = recipes;
+  }
+  Search() {
+    if (this.searchText !== "") {
+      let searchValue = this.searchText.toLocaleLowerCase();
+      this.recipes = this.recipes.filter(Recipe => {
+        return Recipe.title.toLocaleLowerCase().match(searchValue);
+      });
+    }
+    else {
+      this.ngOnInit();
+    }
   }
 }

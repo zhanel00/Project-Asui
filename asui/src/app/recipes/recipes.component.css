@@ -8,12 +8,13 @@
   align-items: center;
   /*width: 100vw;*/
   /*margin: 0;*/
+  margin-bottom: 50px;
 }
 .recipes-title-container {
   display: flex;
   justify-content: start;
   height: 50px;
-  margin-top: 350px;
+  margin-top: 50px;
   margin-bottom: 30px;
   width: 100%;
 }
@@ -33,7 +34,7 @@
   width: 95vw;
   border-radius: 8px;
   flex-direction: row;
-  margin-bottom: 162px;
+  margin-bottom: 120px;
 }
 .featured-collection-image {
   width: 50%;
@@ -96,33 +97,41 @@
   line-height: 78px;
   color: rgba(255, 138, 0, 1);
 }
-.t-n-cc {
-  height: 255px;
+.grid {
+  display: grid;
   width: 95vw;
+  grid-template-columns: 1fr 1fr 1fr 1fr; /* Create 2 columns and auto-place rows */
 }
-.t-n-t {
-  width: 320px;
-  height: 200px;
+.col {
+  margin-right: 48px;
+  margin-bottom: 20px;
 }
-.t-n-txt {
-  height: 20px;
-  margin-bottom: 84px;
-}
-.f-y-t-1 {
+.recipe-title {
+  margin-left: 5px;
+  display: inline-block;
+  position: relative;
   font-family: 'Montserrat', sans-serif;
   font-style: normal;
   font-weight: 600;
-  font-size: 48px;
-  line-height: 78px;
-  margin-right: 10px;
+  font-size: 16px;
+  line-height: 20px;
+  margin-top: 5px;
 }
-.f-y-t-2 {
-  font-family: 'Montserrat', sans-serif;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 48px;
-  line-height: 78px;
-  color: rgba(255, 138, 0, 1);
+.recipe-title::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: black;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+.recipe-title:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
 }
 .desc {
   font-family: 'Montserrat', sans-serif;
@@ -130,4 +139,89 @@
   font-weight: 600;
   font-size: 16px;
   line-height: 20px;
+}
+.group        {
+  position:relative;
+  margin-bottom: 20px;
+}
+input         {
+  font-size:18px;
+  padding:10px 10px 10px 5px;
+  display:block;
+  width:300px;
+  border:none;
+  background-color: transparent;
+  border-bottom: 2px solid #FFB661;
+}
+input:focus     { outline:none; }
+
+label          {
+  color: black;
+  font-size:18px;
+  font-weight:normal;
+  position:absolute;
+  pointer-events:none;
+  left:5px;
+  top:10px;
+  transition:0.2s ease all;
+  -moz-transition:0.2s ease all;
+  -webkit-transition:0.2s ease all;
+}
+
+input:focus ~ label, input:valid ~ label    {
+  top:-20px;
+  font-size:14px;
+  color: #FF8A00;
+}
+
+.bar  { position:relative; display:block; width:300px; }
+.bar:before, .bar:after   {
+  content:'';
+  height:2px;
+  width:0;
+  bottom:1px;
+  position:absolute;
+  background: #FF8A00;
+  transition:0.1s ease all;
+  -moz-transition:0.1s ease all;
+  -webkit-transition:0.1s ease all;
+}
+.bar:before {
+  left:50%;
+}
+.bar:after {
+  right:50%;
+}
+
+/* active state */
+input:focus ~ .bar:before, input:focus ~ .bar:after {
+  width:50%;
+}
+
+.highlight {
+  position:absolute;
+  height:60%;
+  width:100px;
+  top:25%;
+  left:0;
+  pointer-events:none;
+  opacity:0.5;
+}
+
+input:focus ~ .highlight {
+  -webkit-animation:inputHighlighter 0.1s ease;
+  -moz-animation:inputHighlighter 0.1s ease;
+  animation:inputHighlighter 0.1s ease;
+}
+@-webkit-keyframes inputHighlighter {
+  from { background: #FFB661; }
+  to  { width:0; background:transparent; }
+}
+@-moz-keyframes inputHighlighter {
+  from { background: #FFB661; }
+  to  { width:0; background:transparent; }
+}
+@keyframes inputHighlighter {
+  from { background: #FFB661; }
+  to  { width:0; background:transparent; }
 }

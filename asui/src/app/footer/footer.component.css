@@ -1,0 +1,33 @@
+ul {
+  display: inline-grid;
+  grid-auto-flow: row;
+  grid-gap: 24px;
+  justify-items: center;
+  align-items: center;
+  margin: auto;
+  list-style-type: none;
+}
+@media (min-width: 500px) {
+  ul {
+    grid-auto-flow: column;
+    list-style-type: none;
+  }
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+a:hover {
+  color: #FF8A00;
+}
+
+div {
+  display: flex;
+  height: 150px;
+  width: 100%;
+  background: rgba(167, 167, 167, 1);
+  line-height: 3;
+  font-size: 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+}
