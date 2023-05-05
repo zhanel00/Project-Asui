@@ -26,11 +26,10 @@
   <div class="grid">
     <ng-container *ngFor="let recipe of recipes; let i = index;" class="row">
       <div class="col">
-        <img src="{{recipes[i].img_url}}" style="width: 320px; height: 200px;" routerLink="recipes/{{recipes[i].id}}">
+        <img src="{{recipes[i].photo}}" style="width: 320px; height: 200px;" routerLink="recipes/{{recipes[i].id}}">
         <p routerLink="recipes/{{recipes[i].id}}" class="recipe-title">{{recipes[i].title}}</p>
       </div>
     </ng-container>
   </div>
 </div>
 <app-footer></app-footer>
-

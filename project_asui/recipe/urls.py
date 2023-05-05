@@ -1,9 +1,11 @@
-from django.urls import path, re_path
+from django.urls import path
 
-from recipe.views import RecipeListView, RecipeDetailView
+from .views import cbv, fbv
 
 urlpatterns = [
-    path('recipes', RecipeListView.as_view()),
-    path('recipes/<int:pk>', RecipeDetailView.as_view()),
-
+    path('', cbv.RecipeListView.as_view()),
+    path('<int:recipe_id>/', cbv.RecipeDetailView.as_view()),
+    path('<int:recipe_id>/save/', cbv.RecipeSaveView.as_view()),
+    path('<int:recipe_id>/rating/', fbv.recipe_rating),
+    # maybe shoplist
 ]
